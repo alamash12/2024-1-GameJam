@@ -4,17 +4,25 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SettingPopup : UI_Popup
+public class UI_Option : UI_Popup
 {
     enum Sliders
     {
         BgmSlider,
         SfxSlider,
     }
+    enum Buttons
+    {
+        Close
+    }
 
     private void Start()
     {
+        Init();
         Bind<Slider>(typeof(Sliders));
+        Bind<Button>(typeof(Buttons));
+
+        GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
 
         GetSlider((int)Sliders.BgmSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.BGM); });
         GetSlider((int)Sliders.SfxSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.SFX); });
@@ -30,6 +38,10 @@ public class SettingPopup : UI_Popup
         
     }
 
+    void CloseButtonClicked(PointerEventData eventData)
+    {
+        Managers.UI.ClosePopUpUI();
+    }
     void VolumeChange(Define.Sounds Sound)
     {
         float volume;

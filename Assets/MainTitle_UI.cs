@@ -35,7 +35,7 @@ public class MainTitle_UI : UI_Popup
     }
     private void OptionButtonClicked(PointerEventData eventData)
     {
-      
+        Managers.UI.ShowPopUpUI<UI_Option>();
     }
 
 }
