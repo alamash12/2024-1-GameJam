@@ -6,7 +6,8 @@ public class SlotManager : MonoBehaviour
 {
     [SerializeField] private GameObject _slotUIPrefab;
     public Slot[,] studentSlotList;
-
+    public int MouseInputType; // water->0,WakeUp->1,CheerUp->2
+    public Slot tmpSlot;
 
     [Header("Slots")]
     [SerializeField] private float first_slot_x; //슬롯이 시작되는 영역
@@ -73,19 +74,18 @@ public class SlotManager : MonoBehaviour
         }
     }
 
-    private void Update() 
-    {
-        
-    }
     IEnumerator RandomStudentAct()
     {
         Slot slot = studentSlotList[Random.Range(0, slotheightSize - 1), Random.Range(0, slotheightSize - 1)];
-        slot.setHighLight();
-
+        slot.SetActingtype(Random.Range(0, 3));
 
         yield return new WaitForSeconds(1f);
         StartCoroutine(RandomStudentAct());
         yield return null;
     }
 
+    public void SetMouseInputType(int type)
+    {
+        MouseInputType = type;
+    }
 }

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 public class MainGame : BaseScene
 {
     private CanvasGroup canvasGroup;
+
     public override void Clear()
     {
         throw new System.NotImplementedException();
@@ -12,9 +14,7 @@ public class MainGame : BaseScene
 
     protected override void Init()
     {
-
         base.Init();
-
     }
 
     private void Start()
@@ -23,4 +23,6 @@ public class MainGame : BaseScene
         Debug.Log("Start");
         Init();
     }
+
+ 
 }

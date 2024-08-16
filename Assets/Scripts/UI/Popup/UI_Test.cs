@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI_Test : UI_Popup
 {
-    // Start is called before the first frame update
+    
     void Start()
     {
         Init();

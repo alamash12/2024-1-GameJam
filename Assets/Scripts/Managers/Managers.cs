@@ -16,6 +16,7 @@ public class Managers : MonoBehaviour
     SceneManagerEx _scene = new SceneManagerEx();
     DataManager _data = new DataManager(); 
     JsonManager _json = new JsonManager();
+    SlotManager _slot = new SlotManager();
 
 
 
@@ -29,6 +30,8 @@ public class Managers : MonoBehaviour
 
 
     public static SceneManagerEx Scene { get { return Instance._scene; } }
+    
+    public static SlotManager Slot {  get { return Instance._slot; } }
 
 
 
