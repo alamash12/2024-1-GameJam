@@ -32,7 +32,7 @@ public class DataManager
             scoreData.currentScore += 300;
         }
         scoreData.GamePercent = scoreData.currentScore / 100f;
-    }
+    }   
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {

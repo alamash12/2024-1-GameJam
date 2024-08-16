@@ -24,6 +24,9 @@ public class UI_HowToPlay : UI_Popup
         GetButton((int)Buttons.Behind).gameObject.AddUIEvent(BehindButtonClicekd);
         GetButton((int)Buttons.Next).gameObject.AddUIEvent(NextButtonClicked);
         GetButton((int)Buttons.GameStart).gameObject.AddUIEvent(GameStartButtonClcked);
+
+        GetButton((int)Buttons.Behind).gameObject.SetActive(false);
+        GetButton((int)Buttons.GameStart).gameObject.SetActive(false);
     }
     public override void Init()
     {
@@ -33,17 +36,28 @@ public class UI_HowToPlay : UI_Popup
     {
         Managers.UI.ClosePopUpUI();
         index = 0;
+        GetButton((int)Buttons.Behind).gameObject.SetActive(false);
     }
     void BehindButtonClicekd(PointerEventData eventData)
     {
-        if(index == 0)
-            return;
+        GetButton((int)Buttons.Next).gameObject.SetActive(true);
+        GetButton((int)Buttons.GameStart).gameObject.SetActive(false);
+        if (index == 1)
+        {
+            GetButton((int)Buttons.Behind).gameObject.SetActive(false);
+        }
+
         howToPlayPanelImage.sprite = howToPlaySprite[--index];
     }
     void NextButtonClicked(PointerEventData eventData)
     {
-        if (index == 3)
-            return;
+        GetButton((int)Buttons.Behind).gameObject.SetActive(true);
+        if(index == 2)
+        {
+            GetButton((int)Buttons.Next).gameObject.SetActive(false);
+            GetButton((int)Buttons.GameStart).gameObject.SetActive(true);
+        }
+
         howToPlayPanelImage.sprite = howToPlaySprite[++index];
     }
     void GameStartButtonClcked(PointerEventData eventData)
