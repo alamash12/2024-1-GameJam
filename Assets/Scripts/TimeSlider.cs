@@ -26,6 +26,8 @@ public class TimeSlider : MonoBehaviour
                 Managers.Game.PlayerDied();
                 yield break;
             }
+
+            SlotManager._slot.TimerAt(currentTime);
         }
     }
 }

@@ -7,6 +7,25 @@ public class SlotManager : MonoBehaviour
 {
     public static SlotManager _slot { get; private set; }
 
+    public Slider slider;
+    private int timer;
+
+    [Header("Balance Time")]
+    [SerializeField] private float To_10_Delay_minimum;
+    [SerializeField] private float To_10_Delay_max;
+    [SerializeField] private int To_10_Student_minimum;
+    [SerializeField] private int To_10_Student_max;
+
+    [SerializeField] private float To_30_Delay_minimum;
+    [SerializeField] private float To_30_Delay_max;
+    [SerializeField] private int To_30_Student_minimum;
+    [SerializeField] private int To_30_Student_max;
+
+    [SerializeField] private float To_40_Delay_minimum;
+    [SerializeField] private float To_40_Delay_max;
+    [SerializeField] private int To_40_Student_minimum;
+    [SerializeField] private int To_40_Student_max;
+
     [SerializeField] private GameObject _slotUIPrefab;
     public Slot[,] studentSlotList;
     public Slot tmpSlot;
@@ -59,6 +78,7 @@ public class SlotManager : MonoBehaviour
                 availableSlots.Add(new Vector2Int(x, y));
             }
         }
+
     }
 
     private void InitSlots(int slotWidthSize, int slotHeightSize)
@@ -133,21 +153,43 @@ public class SlotManager : MonoBehaviour
         {
             if (availableSlots.Count == 0)
             {
-                Managers.Game.PlayerDied(); break;
+                Managers.Game.PlayerDied(); yield break;
             }
             int randomIndex = Random.Range(0, availableSlots.Count);
             Debug.Log($"DeleteAvailabe 전의 List의 Count {availableSlots.Count}");
             Vector2Int selectedSlotposition = availableSlots[randomIndex];
             Slot slot = studentSlotList[selectedSlotposition.x,selectedSlotposition.y];
             if (!slot.isActing)
-            {
+            {   
                 slot.SetActingtype(Random.Range(0, 3));
                 availableSlots.RemoveAt(randomIndex); // 중복 방지를 위해 선택한 슬롯을 제거
             }
         }
 
-       
+       if(timer==10)
+        {
+            studentDelay_minimum = To_10_Delay_minimum;
+            studentDelay_max = To_10_Delay_max;
+            studentsNumber_minimum = To_10_Student_minimum;
+            studentsNumber_max = To_10_Student_max;
+        }
+       else if(timer==30)
+        {
+            studentDelay_minimum = To_30_Delay_minimum;
+            studentDelay_max = To_30_Delay_max;
+            studentsNumber_minimum = To_30_Student_minimum;
+            studentsNumber_max = To_30_Student_max;
 
+        }
+       else if(timer==40)
+        {
+            studentDelay_minimum = To_40_Delay_minimum;
+            studentDelay_max = To_40_Delay_max;
+            studentsNumber_minimum = To_40_Student_minimum;
+            studentsNumber_max = To_40_Student_max;
+
+        }
+        
 
         studentDelay = Random.Range(studentDelay_minimum, studentDelay_max);
         yield return new WaitForSeconds(studentDelay);
@@ -159,5 +201,10 @@ public class SlotManager : MonoBehaviour
     {
         Debug.Log($"DeleteAvailabe 후 List의 Count {availableSlots.Count}");
         availableSlots.Add(new Vector2Int(x, y));
+    }
+
+    public void TimerAt(float time)
+    {
+        timer = (int)time;
     }
 }
