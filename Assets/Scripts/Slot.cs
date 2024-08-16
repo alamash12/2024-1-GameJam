@@ -13,11 +13,15 @@ public class Slot : MonoBehaviour
     public RectTransform position;
     private Image image;
     public int slotPositionX, slotPositionY;
-    public Slot motherSlot;
+    public Slot CancleSlot;
     public int PersonType; // graphic->0, pd->1, programmer->2, sound -> 3
     public bool isActing = false;
-    public int ActingType; // Water->0 , WakeUp->1, CheerUp->2
+    public int ActingType; // Water->0 , WakeUp->1, CheerUp->2, Basic->3
 
+    private void Start()
+    {
+        image = GetComponent<Image>();
+    }
     public void setHighLight()
     {
         image = GetComponent<Image>();
@@ -119,7 +123,97 @@ public class Slot : MonoBehaviour
 
     public void NowTmpStudent()
     {
+        string _isType = "";
+        string _wasType = "";
+        if (SlotManager._slot.tmpSlot!=null)
+        {
+            CancleSlot = SlotManager._slot.tmpSlot;
+            image = CancleSlot.GetComponent<Image>();
+            if (CancleSlot.PersonType == 0)
+            {
+                _wasType = "graphic";
+            }
+            else if (CancleSlot.PersonType == 1)
+            {
+                _wasType = "pd";
+            }
+            else if (CancleSlot.PersonType == 2)
+            {
+                _wasType = "programer";
+            }
+            else if (CancleSlot.PersonType == 3)
+            {
+                _wasType = "sound";
+            }
+
+
+            if (CancleSlot.isActing == false)
+            {
+                image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_wasType}_basic");
+            }
+            else
+            {
+                if (CancleSlot.ActingType == 0)
+                {
+                    image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_wasType}_drunk");
+                }
+                else if (CancleSlot.ActingType == 1)
+                {// WakeUp->1일때,
+                    image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_wasType}_sleep");
+                }
+                // CheerUp->2일때,
+                else if (CancleSlot.ActingType == 2)
+                {
+                    image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_wasType}_mental");
+                }
+            }
+        }
+
+
+        if (PersonType == 0)
+        {
+            _isType = "graphic";
+        }
+        else if (PersonType == 1)
+        {
+            _isType = "pd";
+        }
+        else if (PersonType == 2)
+        {
+            _isType = "programer";
+        }
+        else if (PersonType == 3)
+        {
+            _isType = "sound";
+        }
+        else Debug.Log("PersonType오류");
+
         SlotManager._slot.tmpSlot = this;
+        image = GetComponent<Image>();
+
+
+        if (isActing==false)
+        {
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Selected/Character_{_isType}_basic_select");
+        }
+        else
+        {
+            if (ActingType == 0)
+            {
+                image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Selected/Character_{_isType}_drunk_select");
+            }
+            else if (ActingType == 1)
+            {// WakeUp->1일때,
+                image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Selected/Character_{_isType}_sleep_select");
+            }
+            // CheerUp->2일때,
+            else if (ActingType == 2)
+            {
+                image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Selected/Character_{_isType}_mental_select");
+            }
+        }
+       
+
     }
 
 }

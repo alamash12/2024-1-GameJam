@@ -110,6 +110,7 @@ public class SlotManager : MonoBehaviour
                 studentSlotList[x, y].slotPositionX = x;
                 studentSlotList[x, y].slotPositionY = y;
 
+
                 int randomIndex = Random.Range(0, 4);
                 if (randomIndex == 0)
                 {
