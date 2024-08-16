@@ -152,7 +152,7 @@ public class SlotManager : MonoBehaviour
         studentNumber = Random.Range(studentsNumber_minimum, studentsNumber_max);
         for(int i =0;i<studentNumber;i++)
         {
-            if (availableSlots.Count == 0)
+            if (availableSlots.Count <=studentNumber)
             {
                 Managers.Game.PlayerDied(); yield break;
             }
@@ -190,7 +190,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_40_Student_max;
 
         }
-        
+
 
         studentDelay = Random.Range(studentDelay_minimum, studentDelay_max);
         yield return new WaitForSeconds(studentDelay);
