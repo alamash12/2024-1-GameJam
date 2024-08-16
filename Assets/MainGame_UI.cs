@@ -13,6 +13,7 @@ public class MainGame_UI : UI_Popup
         CheerUp,
         DebugButton,
     }
+
     void Start()
     {
         Init();
