@@ -24,8 +24,8 @@ public class UI_Option : UI_Popup
 
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
 
-        GetSlider((int)Sliders.BgmSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.BGM); });
-        GetSlider((int)Sliders.SfxSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.SFX); });
+        GetSlider((int)Sliders.BgmSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.BGM); }, Define.UIEvent.PointerUP);
+        GetSlider((int)Sliders.SfxSlider).gameObject.AddUIEvent(delegate { VolumeChange(Define.Sounds.SFX); }, Define.UIEvent.PointerUP);
 
         GetSlider((int)Sliders.BgmSlider).value = Managers.Sound.BGMVolume = PlayerPrefs.GetFloat("BGMVolume");
         GetSlider((int)Sliders.SfxSlider).value = Managers.Sound.SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
@@ -41,6 +41,7 @@ public class UI_Option : UI_Popup
     void CloseButtonClicked(PointerEventData eventData)
     {
         Managers.UI.ClosePopUpUI();
+        Managers.Sound.Play(Define.SFX.Button);
     }
     void VolumeChange(Define.Sounds Sound)
     {

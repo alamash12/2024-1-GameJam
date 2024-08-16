@@ -37,6 +37,7 @@ public class UI_HowToPlay : UI_Popup
         Managers.UI.ClosePopUpUI();
         index = 0;
         GetButton((int)Buttons.Behind).gameObject.SetActive(false);
+        Managers.Sound.Play(Define.SFX.Button);
     }
     void BehindButtonClicekd(PointerEventData eventData)
     {
@@ -46,8 +47,8 @@ public class UI_HowToPlay : UI_Popup
         {
             GetButton((int)Buttons.Behind).gameObject.SetActive(false);
         }
-
         howToPlayPanelImage.sprite = howToPlaySprite[--index];
+        Managers.Sound.Play(Define.SFX.Button);
     }
     void NextButtonClicked(PointerEventData eventData)
     {
@@ -57,11 +58,12 @@ public class UI_HowToPlay : UI_Popup
             GetButton((int)Buttons.Next).gameObject.SetActive(false);
             GetButton((int)Buttons.GameStart).gameObject.SetActive(true);
         }
-
         howToPlayPanelImage.sprite = howToPlaySprite[++index];
+        Managers.Sound.Play(Define.SFX.Button);
     }
     void GameStartButtonClcked(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainGame);
+        Managers.Sound.Play(Define.SFX.Button);
     }
 }
