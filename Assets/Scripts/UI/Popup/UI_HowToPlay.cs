@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
+using UnityEngine;
 public class UI_HowToPlay : UI_Popup
 {
     enum Buttons
@@ -29,18 +29,20 @@ public class UI_HowToPlay : UI_Popup
     }
     void CloseButtonClicked(PointerEventData eventData)
     {
+        Debug.Log("f予之元予之元予元之予元之予");
         Managers.UI.ClosePopUpUI();
     }
     void BehindButtonClicekd(PointerEventData eventData)
     {
-
+        Debug.Log("f予之元予之元予元之予元之予");
     }
     void NextButtonClicked(PointerEventData eventData)
     {
-
+        Debug.Log("f予之元予之元予元之予元之予");
     }
     void GameStartButtonClcked(PointerEventData eventData)
     {
+        Debug.Log("f予之元予之元予元之予元之予");
         Managers.Scene.LoadScene(Define.Scene.MainGame);
     }
 }

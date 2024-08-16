@@ -9,7 +9,7 @@ public class MainTitle_UI : UI_Popup
     {
         GameStart,
         HowToPlay,
-        MaxScore
+        Option
     }
     private void Start()
     {
@@ -18,7 +18,7 @@ public class MainTitle_UI : UI_Popup
 
         GetButton((int)Buttons.GameStart).gameObject.AddUIEvent(GameStartButtonClicked);
         GetButton((int)Buttons.HowToPlay).gameObject.AddUIEvent(HowToPlayButtonClicked);
-        GetButton((int)Buttons.MaxScore).gameObject.AddUIEvent(MaxScoreButtonClicked);
+        GetButton((int)Buttons.Option).gameObject.AddUIEvent(OptionButtonClicked);
     }
     public override void Init()
     {
@@ -30,10 +30,12 @@ public class MainTitle_UI : UI_Popup
     }
     private void HowToPlayButtonClicked(PointerEventData eventData)
     {
+        
         Managers.UI.ShowPopUpUI<UI_HowToPlay>();
     }
-    private void MaxScoreButtonClicked(PointerEventData eventData)
+    private void OptionButtonClicked(PointerEventData eventData)
     {
-
+      
     }
+
 }

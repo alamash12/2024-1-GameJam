@@ -10,7 +10,8 @@ public class MainGame_UI : UI_Popup
     {
         Water,
         WakeUp,
-        CheerUp
+        CheerUp,
+        Option
     }
     void Start()
     {
@@ -25,6 +26,7 @@ public class MainGame_UI : UI_Popup
         GetButton((int)(Buttons.Water)).gameObject.AddUIEvent(WaterButtonClicked);
         GetButton((int)(Buttons.WakeUp)).gameObject.AddUIEvent(WakeUpButtonClicked);
         GetButton((int)(Buttons.CheerUp)).gameObject.AddUIEvent(CheerUpButtonClicked);
+        GetButton((int)(Buttons.Option)).gameObject.AddUIEvent(OptionClicked);
     }
     private void WaterButtonClicked(PointerEventData eventData)
     {
@@ -62,5 +64,10 @@ public class MainGame_UI : UI_Popup
             Managers.Slot.tmpSlot.offHighLight();
             Managers.Slot.tmpSlot = null;
         }
+    }
+
+    private void OptionClicked(PointerEventData eventData)
+    {
+
     }
 }
