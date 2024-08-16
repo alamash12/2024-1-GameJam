@@ -11,7 +11,8 @@ public class MainGame_UI : UI_Popup
         Water,
         WakeUp,
         CheerUp,
-        Option
+        Option,
+        DeDebugButton,
     }
     void Start()
     {
@@ -27,6 +28,7 @@ public class MainGame_UI : UI_Popup
         GetButton((int)(Buttons.WakeUp)).gameObject.AddUIEvent(WakeUpButtonClicked);
         GetButton((int)(Buttons.CheerUp)).gameObject.AddUIEvent(CheerUpButtonClicked);
         GetButton((int)(Buttons.Option)).gameObject.AddUIEvent(OptionClicked);
+        GetButton((int)Buttons.DeDebugButton).gameObject.AddUIEvent(DebugClicked);
     }
     private void WaterButtonClicked(PointerEventData eventData)
     {
@@ -69,5 +71,10 @@ public class MainGame_UI : UI_Popup
     private void OptionClicked(PointerEventData eventData)
     {
 
+    }
+
+    private void DebugClicked(PointerEventData eventData)
+    {
+        Managers.UI.ShowPopUpUI<UI_HowToPlay>();
     }
 }

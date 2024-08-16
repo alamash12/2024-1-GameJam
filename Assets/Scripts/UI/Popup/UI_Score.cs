@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -9,6 +10,12 @@ public class UI_Score : UI_Popup
     {
         ToMain,
         RePlay
+    }
+    enum Texts
+    {
+        GetStudentScore,
+        Score,
+        CompleteGamePercent,
     }
     private void Start()
     {
@@ -21,6 +28,11 @@ public class UI_Score : UI_Popup
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.ToMain).gameObject.AddUIEvent(ToMainClicekd);
         GetButton((int)Buttons.RePlay).gameObject.AddUIEvent(RePlayClicked);
+
+        Get<TMP_Text>((int)Texts.GetStudentScore).text = Managers.Data.scoreData.touchStudent.ToString();
+        Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
+        Get<TMP_Text>((int)Texts.CompleteGamePercent).text = Managers.Data.scoreData.GamePercent.ToString();
+
     }
     void ToMainClicekd(PointerEventData eventData)
     {

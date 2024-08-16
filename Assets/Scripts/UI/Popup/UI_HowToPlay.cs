@@ -5,6 +5,9 @@ using UnityEngine.EventSystems;
 using UnityEngine;
 public class UI_HowToPlay : UI_Popup
 {
+    public Sprite[] howToPlaySprite;
+    public int index = 0;
+    public Image howToPlayPanelImage;
     enum Buttons
     {
         Close,
@@ -15,7 +18,6 @@ public class UI_HowToPlay : UI_Popup
     private void Start()
     {
         Init();
-
         Bind<Button>(typeof(Buttons));
 
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
@@ -29,20 +31,24 @@ public class UI_HowToPlay : UI_Popup
     }
     void CloseButtonClicked(PointerEventData eventData)
     {
-        Debug.Log("f予之元予之元予元之予元之予");
         Managers.UI.ClosePopUpUI();
+        index = 0;
     }
     void BehindButtonClicekd(PointerEventData eventData)
     {
-        Debug.Log("f予之元予之元予元之予元之予");
+        if(index == 0)
+            return;
+        howToPlayPanelImage.sprite = howToPlaySprite[--index];
     }
     void NextButtonClicked(PointerEventData eventData)
     {
-        Debug.Log("f予之元予之元予元之予元之予");
+        Debug.Log(index);
+        if (index == 3)
+            return;
+        howToPlayPanelImage.sprite = howToPlaySprite[++index];
     }
     void GameStartButtonClcked(PointerEventData eventData)
     {
-        Debug.Log("f予之元予之元予元之予元之予");
         Managers.Scene.LoadScene(Define.Scene.MainGame);
     }
 }
