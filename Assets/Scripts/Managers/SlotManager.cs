@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SlotManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class SlotManager : MonoBehaviour
     public Slot[,] studentSlotList;
     public Slot tmpSlot;
     public List<Vector2Int> availableSlots = new List<Vector2Int>();
+
+    [Header("Prefab Images")]
+    [SerializeField] private Sprite Character_Graphic_basic;
+    [SerializeField] private Sprite Character_Pd_basic;
+    [SerializeField] private Sprite Character_Programer_basic;
+    [SerializeField] private Sprite Character_Sound_basic;
 
     [Header("Student Acting")]
     [SerializeField] private float studentDelay_minimum = 1.0f;
@@ -84,7 +91,7 @@ public class SlotManager : MonoBehaviour
                 studentSlotList[x, y].slotPositionY = y;
 
                 
-
+                studentSlotList[x, y].GetComponent<Image>().sprite = Character_Graphic_basic;
             }
         }
 
