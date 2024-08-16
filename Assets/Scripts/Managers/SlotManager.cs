@@ -93,19 +93,23 @@ public class SlotManager : MonoBehaviour
                 int randomIndex = Random.Range(0, 4);
                 if (randomIndex == 0)
                 {
-                    studentSlotList[x, y].GetComponent<Image>().sprite = Character_Graphic_basic;
+                    studentSlotList[x, y].GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>("Assets/Character/Character_graphic_basic");
+                    studentSlotList[x, y].PersonType = 0;
                 }
                 else if (randomIndex == 1)
                 {
-                    studentSlotList[x, y].GetComponent<Image>().sprite = Character_Pd_basic;
+                    studentSlotList[x, y].GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>("Assets/Character/Character_pd_basic");
+                    studentSlotList[x, y].PersonType = 1;
                 }
                 else if (randomIndex == 2)
                 {
-                    studentSlotList[x, y].GetComponent<Image>().sprite = Character_Sound_basic;
+                    studentSlotList[x, y].GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>("Assets/Character/Character_programer_basic");
+                    studentSlotList[x, y].PersonType = 2;
                 }
                 else if (randomIndex == 3)
                 {
-                    studentSlotList[x, y].GetComponent<Image>().sprite = Character_Programer_basic;
+                    studentSlotList[x, y].GetComponent<Image>().sprite = Managers.Resource.Load<Sprite>("Assets/Character/Character_sound_basic");
+                    studentSlotList[x, y].PersonType = 3;
                 }
                 else Debug.Log("index¿À·ù");
             }

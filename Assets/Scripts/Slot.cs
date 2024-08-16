@@ -13,37 +13,93 @@ public class Slot : MonoBehaviour
     private Image image;
     public int slotPositionX, slotPositionY;
     public Slot motherSlot;
-
+    public int PersonType; // graphic->0, pd->1, programmer->2, sound -> 3
     public bool isActing = false;
     public int ActingType; // Water->0 , WakeUp->1, CheerUp->2
 
     public void setHighLight()
     {
-            image = GetComponent<Image>();
+        image = GetComponent<Image>();
         // Water->0일때
+        string _isType="";
+        if (PersonType == 0)
+        {
+            _isType = "graphic";
+        }
+        else if (PersonType == 1)
+        {
+            _isType = "pd";
+        }
+        else if (PersonType == 2)
+        {
+            _isType = "programer";
+        }
+        else if (PersonType == 3)
+        {
+            _isType = "sound";
+        }
+        else Debug.Log("PersonType오류");
+
         if (ActingType == 0)
         {
-            image.color = new Color(243f / 255f, 237f / 255f, 35f / 255f, 255f / 255f); // RGB는 0~1값만 받으므로, 255로 나눠주어야함.
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_drunk");
         }
         else if (ActingType == 1)
         {// WakeUp->1일때,
-            image.color = new Color(255f / 255f, 10f / 255f, 10f / 255f, 255f / 255f); // RGB는 0~1값만 받으므로, 255로 나눠주어야함.
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_sleep");
         }
         // CheerUp->2일때,
         else if (ActingType == 2)
         {
-            image.color = new Color(0f / 255f, 0f / 255f, 0f / 255f, 255f / 255f); // RGB는 0~1값만 받으므로, 255로 나눠주어야함.
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_mental");
         }
         else Debug.Log("Type오류");
-
     }
     public void offHighLight()
     {
             Debug.Log("offHighLight 테스트");
             image = GetComponent<Image>();
-            image.color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 100f / 255f);
+
+        // Water->0일때
+        string _isType = "";
+        if (PersonType == 0)
+        {
+            _isType = "graphic";
+        }
+        else if (PersonType == 1)
+        {
+            _isType = "pd";
+        }
+        else if (PersonType == 2)
+        {
+            _isType = "programer";
+        }
+        else if (PersonType == 3)
+        {
+            _isType = "sound";
+        }
+        else Debug.Log("PersonType오류");
+
+        if (ActingType == 0)
+        {
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
+        }
+        else if (ActingType == 1)
+        {// WakeUp->1일때,
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
+        }
+        // CheerUp->2일때,
+        else if (ActingType == 2)
+        {
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_baisc");
+        }
+        else Debug.Log("Type오류");
         isActing = false;
         SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
+        
+
+
+
     }
 
     public void SetActingtype(int type)
