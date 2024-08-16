@@ -90,7 +90,7 @@ public class SlotManager : MonoBehaviour
                 studentSlotList[x, y].slotPositionX = x;
                 studentSlotList[x, y].slotPositionY = y;
 
-                
+   
                 studentSlotList[x, y].GetComponent<Image>().sprite = Character_Graphic_basic;
             }
         }
