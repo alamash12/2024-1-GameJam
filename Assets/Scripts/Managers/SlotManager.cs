@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SlotManager : MonoBehaviour
 {
+    public static SlotManager _slot { get; private set; }
+
     [SerializeField] private GameObject _slotUIPrefab;
     public Slot[,] studentSlotList;
     public Slot tmpSlot;
@@ -24,7 +26,7 @@ public class SlotManager : MonoBehaviour
     [SerializeField] private float first_slot_y; // 슬롯이 시작되는 영역
     [SerializeField] public float slotwidth = 0; // 하나의 슬롯의 가로 크기
     [SerializeField] public float slotheight = 0; // 하나의 슬롯의 세로 크기
-    [SerializeField] private int slotwidthSize;
+    [SerializeField] private int slotwidthSize=6;
     [SerializeField] private int slotheightSize;// 가로세로 슬롯개수
 
 
@@ -38,8 +40,10 @@ public class SlotManager : MonoBehaviour
 
     public void Init()
     {
+        Debug.Log(slotwidthSize);
         InitSlots(slotwidthSize,slotheightSize);
 
+        _slot = this;
         // 2D 배열의 모든 좌표를 리스트에 추가
         for (int y = 0; y < slotheightSize; y++)
         {
@@ -79,6 +83,8 @@ public class SlotManager : MonoBehaviour
                 studentSlotList[x, y].slotPositionX = x;
                 studentSlotList[x, y].slotPositionY = y;
 
+                
+
             }
         }
 
@@ -103,6 +109,7 @@ public class SlotManager : MonoBehaviour
                 Managers.Game.PlayerDied(); break;
             }
             int randomIndex = Random.Range(0, availableSlots.Count);
+            Debug.Log($"DeleteAvailabe 전의 List의 Count {availableSlots.Count}");
             Vector2Int selectedSlotposition = availableSlots[randomIndex];
             Slot slot = studentSlotList[selectedSlotposition.x,selectedSlotposition.y];
             if (!slot.isActing)
@@ -112,11 +119,18 @@ public class SlotManager : MonoBehaviour
             }
         }
 
+       
+
 
         studentDelay = Random.Range(studentDelay_minimum, studentDelay_max);
         yield return new WaitForSeconds(studentDelay);
         StartCoroutine(RandomStudentAct());
         yield return null;
     }
-
+    
+    public void DeleteAvailable(int x,int y)
+    {
+        Debug.Log($"DeleteAvailabe 후 List의 Count {availableSlots.Count}");
+        availableSlots.Add(new Vector2Int(x, y));
+    }
 }

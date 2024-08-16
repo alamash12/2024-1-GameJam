@@ -43,6 +43,7 @@ public class Slot : MonoBehaviour
             image = GetComponent<Image>();
             image.color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 100f / 255f);
         isActing = false;
+        SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
     }
 
     public void SetActingtype(int type)
@@ -54,7 +55,7 @@ public class Slot : MonoBehaviour
 
     public void NowTmpStudent()
     {
-        Managers.Slot.tmpSlot = this;
+        SlotManager._slot.tmpSlot = this;
     }
 
 }

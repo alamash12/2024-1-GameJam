@@ -30,39 +30,39 @@ public class MainGame_UI : UI_Popup
     }
     private void WaterButtonClicked(PointerEventData eventData)
     {
-        if(Managers.Slot.tmpSlot ==null)
+        if(SlotManager._slot.tmpSlot ==null)
         {
             Debug.Log("tmpSlot Null");
         }
-        else if(Managers.Slot.tmpSlot.ActingType==0)
+        else if(SlotManager._slot.tmpSlot.ActingType==0)
         {
-            Managers.Slot.tmpSlot.offHighLight();
-            Managers.Slot.tmpSlot = null;
+            SlotManager._slot.tmpSlot.offHighLight();
+            SlotManager._slot.tmpSlot = null;
         }
        
     }
     private void WakeUpButtonClicked(PointerEventData eventData)
     {
-        if (Managers.Slot.tmpSlot == null)
+        if (SlotManager._slot.tmpSlot == null)
         {
             Debug.Log("tmpSlot Null");
         }
-        else if(Managers.Slot.tmpSlot.ActingType == 1)
+        else if(SlotManager._slot.tmpSlot.ActingType == 1)
         {
-            Managers.Slot.tmpSlot.offHighLight();
-            Managers.Slot.tmpSlot = null;
+            SlotManager._slot.tmpSlot.offHighLight();
+            SlotManager._slot.tmpSlot = null;
         }
     }
     private void CheerUpButtonClicked(PointerEventData eventData)
     {
-        if (Managers.Slot.tmpSlot == null)
+        if (SlotManager._slot.tmpSlot == null)
         {
             Debug.Log("tmpSlot Null");
         }
-        else if(Managers.Slot.tmpSlot.ActingType == 2)
+        else if(SlotManager._slot.tmpSlot.ActingType == 2)
         {
-            Managers.Slot.tmpSlot.offHighLight();
-            Managers.Slot.tmpSlot = null;
+            SlotManager._slot.tmpSlot.offHighLight();
+            SlotManager._slot.tmpSlot = null;
         }
     }
 

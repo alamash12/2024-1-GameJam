@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 1608083566708860139}
   - component: {fileID: 2586848486780219780}
   m_Layer: 0
-  m_Name: ToMain
+  m_Name: RePlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -848,7 +848,7 @@ GameObject:
   - component: {fileID: 3285817913214493786}
   - component: {fileID: 1835604728647057473}
   m_Layer: 0
-  m_Name: RePlay
+  m_Name: ToMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
