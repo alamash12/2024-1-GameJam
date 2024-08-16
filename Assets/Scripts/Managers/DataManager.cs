@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ public class DataManager
  {
         public Define.WholeGameData gameData;
         public Define.VolumeData volumeData = new Define.VolumeData();
- 
+    public ScoreData scoreData = new ScoreData();
 
     public void Init()
     {
@@ -28,4 +29,23 @@ public class DataManager
         return JsonUtility.FromJson<Loader>(textAsset.text); //JSON 데이터를 불러와서 리턴
     }
 
+}
+
+[System.Serializable]
+public class ScoreData
+{
+    public int currentScore;
+    public int HighScore;
+
+    public ScoreData()
+    {
+        currentScore = 0;
+        HighScore = 0;
+    }
+
+    public void SetHighScore()
+    {
+        if(currentScore > HighScore)
+            HighScore = currentScore;
+    }
 }
