@@ -20,7 +20,6 @@ public class TestScene : BaseScene
     private void Awake()
     {
         Managers.UI.ShowPopUpUI<UI_Test>();
-        Debug.Log("Start");
         Init();
     }
 }

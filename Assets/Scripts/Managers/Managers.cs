@@ -17,6 +17,7 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager(); 
     JsonManager _json = new JsonManager();
     SlotManager _slot = new SlotManager();
+    SoundManager _sound = new SoundManager();
 
 
 
@@ -28,6 +29,7 @@ public class Managers : MonoBehaviour
     public static DataManager Data { get { return Instance._data; } } 
     public static JsonManager Json {  get { return Instance._json; } }
 
+    public static SoundManager Sound { get { return Instance._sound; } }
 
     public static SceneManagerEx Scene { get { return Instance._scene; } }
     
@@ -81,6 +83,7 @@ public class Managers : MonoBehaviour
 
             DontDestroyOnLoad(go);
             s_instance = go.GetComponent<Managers>();
+            s_instance._sound.Init();
             s_instance._pool.Init();
             s_instance._data.Init();
         }
