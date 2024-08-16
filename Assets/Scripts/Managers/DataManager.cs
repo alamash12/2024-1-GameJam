@@ -15,11 +15,11 @@ public class DataManager
  {
         public Define.WholeGameData gameData;
         public Define.VolumeData volumeData = new Define.VolumeData();
-    public ScoreData scoreData = new ScoreData();
+    public ScoreData scoreData;
 
     public void Init()
     {
-       
+        scoreData = new ScoreData();
     }
 
     public void ScoreIncrease()
@@ -31,7 +31,7 @@ public class DataManager
         {
             scoreData.currentScore += 300;
         }
-        scoreData.GamePercent = scoreData.currentScore / 100f;
+        scoreData.GamePercent = Mathf.Clamp(scoreData.currentScore / 100f, 0f, 100f);
     }   
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
@@ -56,7 +56,7 @@ public class ScoreData
     {
         currentScore = 0;
         touchStudent = 0;
-        HighScore = 0;
+        HighScore = PlayerPrefs.GetInt("HighScore");
         GamePercent = 0f;
         comboCount = 0;
     }
@@ -64,6 +64,9 @@ public class ScoreData
     public void SetHighScore()
     {
         if(currentScore > HighScore)
+        {
             HighScore = currentScore;
+            PlayerPrefs.SetInt("HighScore", HighScore);
+        }
     }
 }

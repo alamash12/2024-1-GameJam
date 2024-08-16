@@ -31,38 +31,59 @@ public class MainGame_UI : UI_Popup
     {
         if(SlotManager._slot.tmpSlot ==null)
         {
+            Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
         }
         else if(SlotManager._slot.tmpSlot.ActingType==0)
         {
             SlotManager._slot.tmpSlot.offHighLight();
             SlotManager._slot.tmpSlot = null;
+            Managers.Sound.Play(Define.SFX.Watering);
         }
-       
+        else
+        {
+            Managers.Sound.Play(Define.SFX.Button);
+        }
+
     }
     private void WakeUpButtonClicked(PointerEventData eventData)
     {
         if (SlotManager._slot.tmpSlot == null)
         {
+            Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
         }
         else if(SlotManager._slot.tmpSlot.ActingType == 1)
         {
             SlotManager._slot.tmpSlot.offHighLight();
             SlotManager._slot.tmpSlot = null;
+            Managers.Sound.Play(Define.SFX.Ringing);
         }
+        else
+        {
+            Managers.Sound.Play(Define.SFX.Button);
+        }
+
     }
     private void CheerUpButtonClicked(PointerEventData eventData)
     {
         if (SlotManager._slot.tmpSlot == null)
         {
+            Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
         }
         else if(SlotManager._slot.tmpSlot.ActingType == 2)
         {
             SlotManager._slot.tmpSlot.offHighLight();
             SlotManager._slot.tmpSlot = null;
+            Managers.Sound.Play(Define.SFX.Encourage);
         }
+        else
+        {
+            Managers.Sound.Play(Define.SFX.Button);
+        }
+
+
     }
 
 }
