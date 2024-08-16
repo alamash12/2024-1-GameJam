@@ -22,6 +22,18 @@ public class DataManager
        
     }
 
+    public void ScoreIncrease()
+    {
+        scoreData.currentScore += 100;
+        scoreData.comboCount++;
+        scoreData.touchStudent++;
+        if(scoreData.comboCount % 5 == 0 && scoreData.comboCount != 0)
+        {
+            scoreData.currentScore += 300;
+        }
+        scoreData.GamePercent = scoreData.currentScore / 100f;
+    }
+
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {
         TextAsset textAsset = Managers.Resource.Load<TextAsset>($"Data/{path}"); // text 파일이 textAsset에 담긴다.
@@ -38,12 +50,15 @@ public class ScoreData
     public int touchStudent;
     public int HighScore;
     public float GamePercent;
+    public int comboCount;
 
     public ScoreData()
     {
         currentScore = 0;
         touchStudent = 0;
         HighScore = 0;
+        GamePercent = 0f;
+        comboCount = 0;
     }
 
     public void SetHighScore()

@@ -27,10 +27,12 @@ public class UI_Score : UI_Popup
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<TMP_Text>(typeof(Texts));
+
         GetButton((int)Buttons.ToMain).gameObject.AddUIEvent(ToMainClicekd);
         GetButton((int)Buttons.RePlay).gameObject.AddUIEvent(RePlayClicked);
 
-        Debug.Log(Managers.Data.scoreData.touchStudent);
+
         Get<TMP_Text>((int)Texts.GetStudentScore).text = Managers.Data.scoreData.touchStudent.ToString();
         Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
         Get<TMP_Text>((int)Texts.CompleteGamePercent).text = Managers.Data.scoreData.GamePercent.ToString();
