@@ -80,20 +80,9 @@ public class Slot : MonoBehaviour
         }
         else Debug.Log("PersonType오류");
 
-        if (ActingType == 0)
-        {
             image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
-        }
-        else if (ActingType == 1)
-        {// WakeUp->1일때,
-            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
-        }
-        // CheerUp->2일때,
-        else if (ActingType == 2)
-        {
-            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_baisc");
-        }
-        else Debug.Log("Type오류");
+
+       
         isActing = false;
         SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
         
