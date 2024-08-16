@@ -9,6 +9,7 @@ public class Slot : MonoBehaviour
     // 술마시기 -> 물뿌리기
     // 잠 -> 깨우기
     // 멘붕 -> 격려
+    public Animator padeAnim;
     public RectTransform position;
     private Image image;
     public int slotPositionX, slotPositionY;
@@ -80,17 +81,35 @@ public class Slot : MonoBehaviour
         }
         else Debug.Log("PersonType오류");
 
-            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
-
-        Managers.Data.ScoreIncrease();
-        isActing = false;
-        SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
-        
-
+        StartCoroutine(ActToBasic(_isType));
 
 
     }
 
+    IEnumerator ActToBasic(string _isType)
+    {
+        if (ActingType == 0)
+        {
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_drunk_effect");
+        }
+        else if (ActingType == 1)
+        {// WakeUp->1일때,
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_sleep_effect");
+        }
+        // CheerUp->2일때,
+        else if (ActingType == 2)
+        {
+            image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_mental_effect");
+        }
+
+        yield return new WaitForSeconds(0.4f);
+        image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
+
+        Managers.Data.ScoreIncrease();
+        isActing = false;
+        SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
+        yield return null;
+    }
     public void SetActingtype(int type)
     {
         ActingType = type;

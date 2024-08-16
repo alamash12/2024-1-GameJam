@@ -605,6 +605,7 @@ GameObject:
   - component: {fileID: 368870264}
   - component: {fileID: 368870263}
   - component: {fileID: 368870262}
+  - component: {fileID: 368870265}
   m_Layer: 5
   m_Name: WakeUp
   m_TagString: Untagged
@@ -714,6 +715,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368870260}
   m_CullTransparentMesh: 1
+--- !u!95 &368870265
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368870260}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86dfe58a5113e3b46a7e66c951b5544b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &662911971
 GameObject:
   m_ObjectHideFlags: 0
@@ -1110,14 +1132,14 @@ MonoBehaviour:
   Character_Pd_basic: {fileID: 21300000, guid: b2386a84e8ce46346a6d28f36341ddd9, type: 3}
   Character_Programer_basic: {fileID: 21300000, guid: 656b30facf69e364e9244ed670e26b39, type: 3}
   Character_Sound_basic: {fileID: 21300000, guid: ea9a386c598b3384fbbf4f1679b0776c, type: 3}
-  studentDelay_minimum: 0
+  studentDelay_minimum: 0.5
   studentDelay_max: 2
   studentsNumber_minimum: 1
   studentsNumber_max: 3
   first_slot_x: 0
   first_slot_y: 0
-  slotwidth: 310
-  slotheight: 350
+  slotwidth: 330
+  slotheight: 380
   slotwidthSize: 4
   slotheightSize: 5
   studentSlots: {fileID: 1794241457}
@@ -1756,7 +1778,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -524, y: 582}
-  m_SizeDelta: {x: 280, y: 280}
+  m_SizeDelta: {x: 312, y: 390}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2056166609
 MonoBehaviour:
@@ -1808,6 +1830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29f06e7ee55dc6d49bda66ed8796254a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  padeAnim: {fileID: 0}
   position: {fileID: 0}
   slotPositionX: 0
   slotPositionY: 0
