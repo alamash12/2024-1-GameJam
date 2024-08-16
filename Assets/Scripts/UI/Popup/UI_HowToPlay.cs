@@ -42,7 +42,6 @@ public class UI_HowToPlay : UI_Popup
     }
     void NextButtonClicked(PointerEventData eventData)
     {
-        Debug.Log(index);
         if (index == 3)
             return;
         howToPlayPanelImage.sprite = howToPlaySprite[++index];
