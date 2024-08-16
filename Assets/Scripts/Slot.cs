@@ -42,7 +42,6 @@ public class Slot : MonoBehaviour
             Debug.Log("offHighLight Å×½ºÆ®");
             image = GetComponent<Image>();
             image.color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 100f / 255f);
-            Managers.Slot.MouseInputType = 4;
     }
 
     public void SetActingtype(int type)

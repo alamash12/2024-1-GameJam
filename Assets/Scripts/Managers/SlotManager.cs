@@ -6,8 +6,17 @@ public class SlotManager : MonoBehaviour
 {
     [SerializeField] private GameObject _slotUIPrefab;
     public Slot[,] studentSlotList;
-    public int MouseInputType; // water->0,WakeUp->1,CheerUp->2
     public Slot tmpSlot;
+
+    [Header("Student Acting")]
+    [SerializeField] private float studentDelay_minimum = 1.0f;
+    [SerializeField] private float studentDelay_max = 2.0f;
+    [SerializeField] private int studentsNumber_minimum = 1;
+    [SerializeField] private int studentsNumber_max = 3;
+    private float studentDelay;
+    private int studentNumber;
+
+
 
     [Header("Slots")]
     [SerializeField] private float first_slot_x; //슬롯이 시작되는 영역
@@ -76,16 +85,18 @@ public class SlotManager : MonoBehaviour
 
     IEnumerator RandomStudentAct()
     {
-        Slot slot = studentSlotList[Random.Range(0, slotheightSize - 1), Random.Range(0, slotheightSize - 1)];
-        slot.SetActingtype(Random.Range(0, 3));
+        studentNumber = Random.Range(studentsNumber_minimum, studentsNumber_max);
+        for(int i =0;i<studentNumber;i++)
+        {
+            Slot slot = studentSlotList[Random.Range(0, slotheightSize - 1), Random.Range(0, slotheightSize - 1)];
+            slot.SetActingtype(Random.Range(0, 3));
+        }
 
-        yield return new WaitForSeconds(1f);
+
+        studentDelay = Random.Range(studentDelay_minimum, studentDelay_max);
+        yield return new WaitForSeconds(studentDelay);
         StartCoroutine(RandomStudentAct());
         yield return null;
     }
 
-    public void SetMouseInputType(int type)
-    {
-        MouseInputType = type;
-    }
 }

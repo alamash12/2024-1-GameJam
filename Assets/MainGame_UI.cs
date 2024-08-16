@@ -28,15 +28,24 @@ public class MainGame_UI : UI_Popup
     }
     private void WaterButtonClicked(PointerEventData eventData)
     {
-        if(Managers.Slot.tmpSlot.ActingType==0)
+        if(Managers.Slot.tmpSlot ==null)
+        {
+            Debug.Log("tmpSlot Null");
+        }
+        else if(Managers.Slot.tmpSlot.ActingType==0)
         {
             Managers.Slot.tmpSlot.offHighLight();
             Managers.Slot.tmpSlot = null;
         }
+       
     }
     private void WakeUpButtonClicked(PointerEventData eventData)
     {
-        if (Managers.Slot.tmpSlot.ActingType == 1)
+        if (Managers.Slot.tmpSlot == null)
+        {
+            Debug.Log("tmpSlot Null");
+        }
+        else if(Managers.Slot.tmpSlot.ActingType == 1)
         {
             Managers.Slot.tmpSlot.offHighLight();
             Managers.Slot.tmpSlot = null;
@@ -44,7 +53,11 @@ public class MainGame_UI : UI_Popup
     }
     private void CheerUpButtonClicked(PointerEventData eventData)
     {
-        if (Managers.Slot.tmpSlot.ActingType == 2)
+        if (Managers.Slot.tmpSlot == null)
+        {
+            Debug.Log("tmpSlot Null");
+        }
+        else if(Managers.Slot.tmpSlot.ActingType == 2)
         {
             Managers.Slot.tmpSlot.offHighLight();
             Managers.Slot.tmpSlot = null;
