@@ -41,7 +41,6 @@ public class ScoreData
     {
         currentScore = 0;
         HighScore = 0;
-        Debug.Log(currentScore);
     }
 
     public void SetHighScore()

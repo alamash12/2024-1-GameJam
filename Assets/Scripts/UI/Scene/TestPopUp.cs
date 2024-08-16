@@ -21,8 +21,8 @@ public class TestPopUp : UI_Popup
     }
     void Start()
     {
-        base.Init();
-        SetResolution();
+        Init();
+
         Bind<Button>(typeof(Buttons));
         Bind<TMP_Text>(typeof(Texts));
 
@@ -30,29 +30,32 @@ public class TestPopUp : UI_Popup
         GetButton((int)Buttons.HighScoreClearButton).gameObject.AddUIEvent(Clear);
         GetButton((int)Buttons.HighScoreSetButton).gameObject.AddUIEvent(SetHighScore);
 
-
-        StartCoroutine(dataloading());
+        Get<TMP_Text>((int)Texts.CurrentScoreText).text = Managers.Data.scoreData.currentScore.ToString();
+        Get<TMP_Text>((int)Texts.HighScoreText1).text = Managers.Data.scoreData.HighScore.ToString();
     }
-    IEnumerator dataloading()
+    public override void Init()
     {
-        yield return new WaitForSeconds(0.1f);
-        GetText((int)Texts.CurrentScoreText).text = Managers.Data.scoreData.currentScore.ToString();
-        GetText((int)Texts.HighScoreText1).text = Managers.Data.scoreData.HighScore.ToString();
-        yield return null;
+        base.Init();
+        Managers.Data.scoreData.HighScore = PlayerPrefs.GetInt("HighScore");
     }
 
     void ScoreIncrease(PointerEventData eventData)
     {
         Managers.Data.scoreData.currentScore += 100;
+        Get<TMP_Text>((int)Texts.CurrentScoreText).text = Managers.Data.scoreData.currentScore.ToString();
     }
 
     void Clear(PointerEventData eventData)
     {
         Managers.Data.scoreData.HighScore = 0;
+        Get<TMP_Text>((int)Texts.HighScoreText1).text = Managers.Data.scoreData.HighScore.ToString();
+        PlayerPrefs.SetInt("HighScore", Managers.Data.scoreData.HighScore);
     }
 
     void SetHighScore(PointerEventData eventData)
     {
         Managers.Data.scoreData.SetHighScore();
+        Get<TMP_Text>((int)Texts.HighScoreText1).text = Managers.Data.scoreData.HighScore.ToString();
+        PlayerPrefs.SetInt("HighScore", Managers.Data.scoreData.HighScore);
     }
 }
