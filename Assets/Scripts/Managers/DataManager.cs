@@ -35,11 +35,14 @@ public class DataManager
 public class ScoreData
 {
     public int currentScore;
+    public int touchStudent;
     public int HighScore;
+    public float GamePercent;
 
     public ScoreData()
     {
         currentScore = 0;
+        touchStudent = 0;
         HighScore = 0;
     }
 
