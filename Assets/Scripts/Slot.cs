@@ -82,7 +82,7 @@ public class Slot : MonoBehaviour
 
             image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
 
-       
+        Managers.Data.ScoreIncrease();
         isActing = false;
         SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
         
