@@ -176,11 +176,17 @@ public class Define
 
     public enum BGM
     {
-        TownFinal,
+        Background,
+
     }
 
     public enum SFX
     {
-        TownFinal,
+        Button,
+        Encourage,
+        Lose,
+        Ringing,
+        Watering,
+        Win,
     }
 }
