@@ -7,6 +7,7 @@ public class SlotManager : MonoBehaviour
     [SerializeField] private GameObject _slotUIPrefab;
     public Slot[,] studentSlotList;
     public Slot tmpSlot;
+    public List<Vector2Int> availableSlots = new List<Vector2Int>();
 
     [Header("Student Acting")]
     [SerializeField] private float studentDelay_minimum = 1.0f;
@@ -38,6 +39,15 @@ public class SlotManager : MonoBehaviour
     public void Init()
     {
         InitSlots(slotwidthSize,slotheightSize);
+
+        // 2D 배열의 모든 좌표를 리스트에 추가
+        for (int y = 0; y < slotheightSize; y++)
+        {
+            for (int x = 0; x < slotwidthSize; x++)
+            {
+                availableSlots.Add(new Vector2Int(x, y));
+            }
+        }
     }
 
     private void InitSlots(int slotWidthSize, int slotHeightSize)
@@ -88,8 +98,18 @@ public class SlotManager : MonoBehaviour
         studentNumber = Random.Range(studentsNumber_minimum, studentsNumber_max);
         for(int i =0;i<studentNumber;i++)
         {
-            Slot slot = studentSlotList[Random.Range(0, slotheightSize - 1), Random.Range(0, slotheightSize - 1)];
-            slot.SetActingtype(Random.Range(0, 3));
+            if (availableSlots.Count == 0)
+            {
+                Managers.Game.PlayerDied(); break;
+            }
+            int randomIndex = Random.Range(0, availableSlots.Count);
+            Vector2Int selectedSlotposition = availableSlots[randomIndex];
+            Slot slot = studentSlotList[selectedSlotposition.x,selectedSlotposition.y];
+            if (!slot.isActing)
+            {
+                slot.SetActingtype(Random.Range(0, 3));
+                availableSlots.RemoveAt(randomIndex); // 중복 방지를 위해 선택한 슬롯을 제거
+            }
         }
 
 

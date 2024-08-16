@@ -14,7 +14,7 @@ public class Slot : MonoBehaviour
     public int slotPositionX, slotPositionY;
     public Slot motherSlot;
 
-    public bool isActing;
+    public bool isActing = false;
     public int ActingType; // Water->0 , WakeUp->1, CheerUp->2
 
     public void setHighLight()
@@ -42,11 +42,13 @@ public class Slot : MonoBehaviour
             Debug.Log("offHighLight Å×½ºÆ®");
             image = GetComponent<Image>();
             image.color = new Color(255f / 255f, 255f / 255f, 255f / 255f, 100f / 255f);
+        isActing = false;
     }
 
     public void SetActingtype(int type)
     {
         ActingType = type;
+        isActing = true;
         setHighLight();
     }
 

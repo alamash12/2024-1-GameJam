@@ -28,6 +28,6 @@ public class UI_Score : UI_Popup
     }
     void RePlayClicked(PointerEventData eventData)
     {
-        
+        Managers.Scene.LoadScene(Define.Scene.MainGame);
     }
 }
