@@ -154,7 +154,7 @@ public class SlotManager : MonoBehaviour
         {
             if (availableSlots.Count <=studentNumber)
             {
-                Managers.Game.PlayerDied(); yield break;
+                Managers.Game.PlayerDied(0); yield break;
             }
             int randomIndex = Random.Range(0, availableSlots.Count);
             Debug.Log($"DeleteAvailabe ÀüÀÇ ListÀÇ Count {availableSlots.Count}");

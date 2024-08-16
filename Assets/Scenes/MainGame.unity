@@ -1069,10 +1069,6 @@ MonoBehaviour:
   To_40_Delay_max: 1.3
   To_40_Student_minimum: 3
   To_40_Student_max: 4
-  To_60_Delay_minimum: 0
-  To_60_Delay_max: 0
-  To_60_Student_minimum: 0
-  To_60_Student_max: 0
   _slotUIPrefab: {fileID: 2056166607}
   tmpSlot: {fileID: 0}
   availableSlots: []
@@ -1080,8 +1076,8 @@ MonoBehaviour:
   Character_Pd_basic: {fileID: 21300000, guid: b2386a84e8ce46346a6d28f36341ddd9, type: 3}
   Character_Programer_basic: {fileID: 21300000, guid: 656b30facf69e364e9244ed670e26b39, type: 3}
   Character_Sound_basic: {fileID: 21300000, guid: ea9a386c598b3384fbbf4f1679b0776c, type: 3}
-  studentDelay_minimum: 1.5
-  studentDelay_max: 2
+  studentDelay_minimum: 10
+  studentDelay_max: 10
   studentsNumber_minimum: 1
   studentsNumber_max: 1
   first_slot_x: 0
@@ -1886,7 +1882,7 @@ MonoBehaviour:
   position: {fileID: 0}
   slotPositionX: 0
   slotPositionY: 0
-  motherSlot: {fileID: 0}
+  CancleSlot: {fileID: 0}
   PersonType: 0
   isActing: 0
   ActingType: 0

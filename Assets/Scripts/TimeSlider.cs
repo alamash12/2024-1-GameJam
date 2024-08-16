@@ -23,7 +23,11 @@ public class TimeSlider : MonoBehaviour
             slider.value = Mathf.Clamp(currentTime / maxTime, 0, 1);
             if(slider.value == 1)
             {
-                Managers.Game.PlayerDied();
+                if (Managers.Data.scoreData.currentScore >= 7000)
+                {
+                    Managers.Game.PlayerDied(2);
+                }
+                else Managers.Game.PlayerDied(1);
                 yield break;
             }
 

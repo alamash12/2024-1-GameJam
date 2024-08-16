@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class UI_Score : UI_Popup
 {
+    public Image image;
+    public Image DiveImage;
     enum Buttons
     {
         ToMain,
@@ -37,6 +39,19 @@ public class UI_Score : UI_Popup
         Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
         Get<TMP_Text>((int)Texts.CompleteGamePercent).text = Managers.Data.scoreData.GamePercent.ToString();
 
+        if(Managers.Game.gameStateIndex==0)//잠수
+        {
+            Managers.UI.ClosePopUpUI();
+            Managers.UI.ShowPopUpUI<UI_FailPopUp>();
+        }
+        else if (Managers.Game.gameStateIndex == 1)// 실패    
+        {
+            image.sprite = Managers.Resource.Load<Sprite>("Sprites/Result_fail");
+        }
+        else // 성공
+        {
+            image.sprite = Managers.Resource.Load<Sprite>("Sprites/Result_success");
+        }
     }
     void ToMainClicekd(PointerEventData eventData)
     {
