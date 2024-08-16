@@ -167,11 +167,20 @@ public class Define
         MainGame,
         MainTitle
     }
-    public enum Sound
+    public enum Sounds
     {
-        Master,
         BGM,
         SFX,
         MaxCount
+    }
+
+    public enum BGM
+    {
+        TownFinal,
+    }
+
+    public enum SFX
+    {
+        TownFinal,
     }
 }
