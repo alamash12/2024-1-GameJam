@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MainGame : BaseScene
 {
+    private CanvasGroup canvasGroup;
     public override void Clear()
     {
         throw new System.NotImplementedException();

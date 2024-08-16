@@ -53,8 +53,8 @@ public class Managers : MonoBehaviour
     public IEnumerator WaitForDataLoading()
     {
         // _data.itemsData = _json.Load<Define.ItemsData>();
-        _data.Items = _json.Load<Define.Items>();
-        _data.Blesses = _json.Load<Define.Blesses>();
+        // _data.Items = _json.Load<Define.Items>();
+        // _data.Blesses = _json.Load<Define.Blesses>();
         yield return null;
     }
     // Update is called once per frame

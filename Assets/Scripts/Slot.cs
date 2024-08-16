@@ -11,6 +11,8 @@ public class Slot : MonoBehaviour
     public int slotPositionX, slotPositionY;
     public Slot motherSlot;
 
+    public bool isActing;
+
     public void setHighLight()
     {
             image = GetComponent<Image>();
@@ -20,7 +22,9 @@ public class Slot : MonoBehaviour
     {
         Debug.Log("offHighLight Å×½ºÆ®");
         image = GetComponent<Image>();
-        image.color = new Color(56f/255f, 56f/255f, 56f/255f, 100f/255f);
+        image.color = new Color(255f/255f, 255f/255f, 255f/255f, 100f/255f);
     }
+
+
 }
 

@@ -21,12 +21,13 @@ public class SlotManager : MonoBehaviour
     [SerializeField] public GameObject studentSlots;
     private void Start()
     {
-        
+        Init();
+        StartCoroutine(RandomStudentAct());
     }
 
     public void Init()
     {
-       
+        InitSlots(slotwidthSize,slotheightSize);
     }
 
     private void InitSlots(int slotWidthSize, int slotHeightSize)
@@ -54,23 +55,37 @@ public class SlotManager : MonoBehaviour
                 studentSlotList[x, y] = cloneslot.GetComponent<Slot>();
                 studentSlotList[x, y].position = clonert; // 슬롯에위치저장.
 
-                cloneslot.name = $"Inventory Slot [{x}],[{y}]"; //이름설정
+                cloneslot.name = $"Student Slot [{x}],[{y}]"; //이름설정
                 studentSlotList[x, y].slotPositionX = x;
                 studentSlotList[x, y].slotPositionY = y;
 
             }
         }
 
-        studentSlots.SetActive(true); // 나중에 버튼을 통한 InventorySetActive를 위한 False
-        studentSlots.GetComponent<CanvasGroup>().alpha = 0;
-        studentSlots.GetComponent<CanvasGroup>().blocksRaycasts = false; // 인벤토리 꺼짐으로 설정
-
+        studentSlots.SetActive(true);
+        studentSlots.GetComponent<CanvasGroup>().alpha = 1;
 
         GameObject CloneSlot() // 클론 생성
         {
-            GameObject cloneSlotPrefab = Instantiate(_slotUIPrefab, createPoint, Quaternion.identity, GameObject.Find("InventorySlots").transform); // 캔버스안으로 구현
+            GameObject cloneSlotPrefab = Instantiate(_slotUIPrefab, createPoint, Quaternion.identity, GameObject.Find("StudentSlots").transform); // 캔버스안으로 구현
 
             return cloneSlotPrefab;
         }
     }
+
+    private void Update() 
+    {
+        
+    }
+    IEnumerator RandomStudentAct()
+    {
+        Slot slot = studentSlotList[Random.Range(0, slotheightSize - 1), Random.Range(0, slotheightSize - 1)];
+        slot.setHighLight();
+
+
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(RandomStudentAct());
+        yield return null;
+    }
+
 }
