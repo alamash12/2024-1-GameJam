@@ -1215,7 +1215,7 @@ MonoBehaviour:
   studentDelay_minimum: 1
   studentDelay_max: 3
   studentsNumber_minimum: 1
-  studentsNumber_max: 2
+  studentsNumber_max: 1
   first_slot_x: 0
   first_slot_y: 0
   slotwidth: 330
@@ -1864,6 +1864,7 @@ GameObject:
   - component: {fileID: 1833480402}
   - component: {fileID: 1833480404}
   - component: {fileID: 1833480403}
+  - component: {fileID: 1833480405}
   m_Layer: 5
   m_Name: TimeSlider
   m_TagString: Untagged
@@ -1906,6 +1907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   maxTime: 60
+  isStop: 0
 --- !u!114 &1833480404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1957,6 +1959,29 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!223 &1833480405
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833480401}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &2000710080
 GameObject:
   m_ObjectHideFlags: 0
