@@ -30,6 +30,8 @@ public class UI_Option : UI_Popup
         GetSlider((int)Sliders.BgmSlider).value = Managers.Sound.BGMVolume = PlayerPrefs.GetFloat("BGMVolume");
         GetSlider((int)Sliders.SfxSlider).value = Managers.Sound.SFXVolume = PlayerPrefs.GetFloat("SFXVolume");
 
+        Managers.Sound.SetVolume(Define.Sounds.BGM, Managers.Sound.BGMVolume);
+        Managers.Sound.SetVolume(Define.Sounds.SFX, Managers.Sound.SFXVolume);
     }
 
     public override void Init()
