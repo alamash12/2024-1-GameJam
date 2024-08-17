@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using TMPro;
 
 public class MainGame_UI : UI_Popup
 {
@@ -13,6 +14,10 @@ public class MainGame_UI : UI_Popup
         CheerUp,
     }
 
+    enum Texts
+    {
+        Score,
+    }
     void Start()
     {
         Init();
@@ -22,10 +27,17 @@ public class MainGame_UI : UI_Popup
         base.Init();
 
         Bind<Button>(typeof(Buttons));
+        Bind<TMP_Text>(typeof(Texts));
 
         GetButton((int)(Buttons.Water)).gameObject.AddUIEvent(WaterButtonClicked);
         GetButton((int)(Buttons.WakeUp)).gameObject.AddUIEvent(WakeUpButtonClicked);
         GetButton((int)(Buttons.CheerUp)).gameObject.AddUIEvent(CheerUpButtonClicked);
+
+        
+    }
+    private void Update()
+    {
+        Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
     }
     private void WaterButtonClicked(PointerEventData eventData)
     {
