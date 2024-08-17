@@ -36,6 +36,7 @@ public class DataManager
     public void ScoreInit()
     {
         scoreData.currentScore = 0;
+        scoreData.touchStudent = 0;
     }
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
     {

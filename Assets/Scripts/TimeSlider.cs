@@ -24,7 +24,7 @@ public class TimeSlider : MonoBehaviour
             slider.value = Mathf.Clamp(currentTime / maxTime, 0, 1);
             if(slider.value == 1)
             {
-                if (Managers.Data.scoreData.currentScore >= 7000)
+                if (Managers.Data.scoreData.currentScore >= 6500)
                 {
                     Managers.Game.PlayerDied(2);
                 }
