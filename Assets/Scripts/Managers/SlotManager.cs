@@ -208,4 +208,10 @@ public class SlotManager : MonoBehaviour
     {
         timer = (int)time;
     }
+
+    public void SliderConnect()
+    {
+        StopAllCoroutines();
+        slider.GetComponent<TimeSlider>().isStop = true;
+    }
 }

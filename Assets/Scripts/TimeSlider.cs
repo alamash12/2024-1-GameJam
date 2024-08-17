@@ -9,6 +9,7 @@ public class TimeSlider : MonoBehaviour
     public float currentTime;
     public float maxTime;
     Slider slider;
+    public bool isStop = false;
     private void Start()
     {
         StartCoroutine(TimeFlow());
@@ -16,7 +17,7 @@ public class TimeSlider : MonoBehaviour
     }
     IEnumerator TimeFlow()
     {
-        while (true)
+        while (!isStop)
         {
             yield return new WaitForSecondsRealtime(1.0f);
             currentTime++;
@@ -33,5 +34,8 @@ public class TimeSlider : MonoBehaviour
 
             SlotManager._slot.TimerAt(currentTime);
         }
+        yield return null;
     }
+
+
 }

@@ -41,17 +41,19 @@ public class UI_Score : UI_Popup
 
         if(Managers.Game.gameStateIndex==0)//잠수
         {
-            Time.timeScale = 0;
+            SlotManager._slot.SliderConnect();
             Managers.UI.ClosePopUpUI();
             Managers.UI.ShowPopUpUI<UI_FailPopUp>();
         }
         else if (Managers.Game.gameStateIndex == 1)// 실패    
         {
             image.sprite = Managers.Resource.Load<Sprite>("Sprites/Result_fail");
+            SlotManager._slot.SliderConnect();
         }
         else // 성공
         {
             image.sprite = Managers.Resource.Load<Sprite>("Sprites/Result_success");
+            SlotManager._slot.SliderConnect();
         }
     }
     void ToMainClicekd(PointerEventData eventData)
