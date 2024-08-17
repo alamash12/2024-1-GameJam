@@ -7,6 +7,7 @@ using TMPro;
 
 public class MainGame_UI : UI_Popup
 {
+    public TimeSlider timeslider;
     enum Buttons
     {
         Water,
@@ -39,12 +40,20 @@ public class MainGame_UI : UI_Popup
     {
         Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
     }
+
+    private void WrongClicked()
+    {
+        timeslider.currentTime++;
+    }
     private void WaterButtonClicked(PointerEventData eventData)
     {
         if(SlotManager._slot.tmpSlot ==null)
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
+
+            
         }
         else if(SlotManager._slot.tmpSlot.ActingType==0)
         {
@@ -54,6 +63,7 @@ public class MainGame_UI : UI_Popup
         }
         else
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
         }
 
@@ -62,6 +72,7 @@ public class MainGame_UI : UI_Popup
     {
         if (SlotManager._slot.tmpSlot == null)
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
         }
@@ -73,6 +84,7 @@ public class MainGame_UI : UI_Popup
         }
         else
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
         }
 
@@ -81,6 +93,7 @@ public class MainGame_UI : UI_Popup
     {
         if (SlotManager._slot.tmpSlot == null)
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
             Debug.Log("tmpSlot Null");
         }
@@ -92,6 +105,7 @@ public class MainGame_UI : UI_Popup
         }
         else
         {
+            WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
         }
 

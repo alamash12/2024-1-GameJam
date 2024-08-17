@@ -41,6 +41,7 @@ public class UI_Score : UI_Popup
 
         if(Managers.Game.gameStateIndex==0)//Àá¼ö
         {
+            Time.timeScale = 0;
             Managers.UI.ClosePopUpUI();
             Managers.UI.ShowPopUpUI<UI_FailPopUp>();
         }
