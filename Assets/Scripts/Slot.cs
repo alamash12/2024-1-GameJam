@@ -62,7 +62,8 @@ public class Slot : MonoBehaviour
     }
     public void offHighLight()
     {
-            Debug.Log("offHighLight 테스트");
+        Managers.Data.ScoreIncrease();
+        Debug.Log("offHighLight 테스트");
             image = GetComponent<Image>();
 
         // Water->0일때
@@ -92,6 +93,7 @@ public class Slot : MonoBehaviour
 
     IEnumerator ActToBasic(string _isType)
     {
+        
         if (ActingType == 0)
         {
             image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_drunk_effect");
@@ -108,8 +110,6 @@ public class Slot : MonoBehaviour
 
         yield return new WaitForSeconds(0.4f);
         image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
-
-        Managers.Data.ScoreIncrease();
         isActing = false;
         SlotManager._slot.DeleteAvailable(slotPositionX, slotPositionY);
         yield return null;
