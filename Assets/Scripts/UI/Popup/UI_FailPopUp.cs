@@ -29,14 +29,19 @@ public class UI_FailPopUp : UI_Popup
         GetButton((int)Buttons.ToMain).gameObject.AddUIEvent(ToMainClicekd);
         GetButton((int)Buttons.RePlay).gameObject.AddUIEvent(RePlayClicked);
 
-        Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
+        Managers.Data.scoreData.SetHighScore();
+        Get<TMP_Text>((int)Texts.Score).text = $"{(Managers.Data.scoreData.currentScore / 100)}%";
     }
     void ToMainClicekd(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainTitle);
+        Managers.Data.ScoreInit();
+        Managers.Sound.Play(Define.SFX.Button);
     }
     void RePlayClicked(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainGame);
+        Managers.Data.ScoreInit();
+        Managers.Sound.Play(Define.SFX.Button);
     }
 }

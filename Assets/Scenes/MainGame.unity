@@ -546,6 +546,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ee48b4beb511e4ab2ea5ffbb07646b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeslider: {fileID: 1833480403}
 --- !u!114 &360549741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,8 +1214,8 @@ MonoBehaviour:
   Character_Sound_basic: {fileID: 21300000, guid: ea9a386c598b3384fbbf4f1679b0776c, type: 3}
   studentDelay_minimum: 1
   studentDelay_max: 3
-  studentsNumber_minimum: 3
-  studentsNumber_max: 4
+  studentsNumber_minimum: 1
+  studentsNumber_max: 2
   first_slot_x: 0
   first_slot_y: 0
   slotwidth: 330

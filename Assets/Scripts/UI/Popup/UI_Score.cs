@@ -37,7 +37,7 @@ public class UI_Score : UI_Popup
         Managers.Data.scoreData.SetHighScore();
         Get<TMP_Text>((int)Texts.GetStudentScore).text = Managers.Data.scoreData.touchStudent.ToString();
         Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
-        Get<TMP_Text>((int)Texts.CompleteGamePercent).text = Managers.Data.scoreData.GamePercent.ToString();
+        Get<TMP_Text>((int)Texts.CompleteGamePercent).text = $"{(Managers.Data.scoreData.currentScore / 100)}%";
 
         if(Managers.Game.gameStateIndex==0)//Àá¼ö
         {
@@ -57,11 +57,13 @@ public class UI_Score : UI_Popup
     void ToMainClicekd(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainTitle);
+        Managers.Data.ScoreInit();
         Managers.Sound.Play(Define.SFX.Button);
     }
     void RePlayClicked(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainGame);
         Managers.Sound.Play(Define.SFX.Button);
+        Managers.Data.ScoreInit();
     }
 }
