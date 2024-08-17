@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -11,6 +12,11 @@ public class UI_FailPopUp : UI_Popup
         ToMain,
         RePlay
     }
+
+    enum Texts
+    {
+        Score,
+    }
     private void Start()
     {
         Init();
@@ -19,8 +25,11 @@ public class UI_FailPopUp : UI_Popup
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
+        Bind<TMP_Text>(typeof(Texts));
         GetButton((int)Buttons.ToMain).gameObject.AddUIEvent(ToMainClicekd);
         GetButton((int)Buttons.RePlay).gameObject.AddUIEvent(RePlayClicked);
+
+        Get<TMP_Text>((int)Texts.Score).text = Managers.Data.scoreData.currentScore.ToString();
     }
     void ToMainClicekd(PointerEventData eventData)
     {
