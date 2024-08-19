@@ -62,7 +62,6 @@ public class Slot : MonoBehaviour
     }
     public void offHighLight()
     {
-        Managers.Data.ScoreIncrease();
         Debug.Log("offHighLight Å×½ºÆ®");
             image = GetComponent<Image>();
 
@@ -107,7 +106,7 @@ public class Slot : MonoBehaviour
         {
             image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_mental_effect");
         }
-
+        Managers.Data.ScoreIncrease();
         yield return new WaitForSeconds(0.4f);
         image.sprite = Managers.Resource.Load<Sprite>($"Assets/Character/Character_{_isType}_basic");
         isActing = false;
