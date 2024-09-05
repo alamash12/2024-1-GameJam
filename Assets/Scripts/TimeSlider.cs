@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class TimeSlider : MonoBehaviour
 {
     public float currentTime;
-    public float maxTime;
+    private float maxTime;
     Slider slider;
     public bool isStop = false;
     private void Start()
     {
         StartCoroutine(TimeFlow());
         slider = gameObject.GetComponent<Slider>();
+        currentTime = SlotManager._slot.timer;
+        maxTime = SlotManager._slot.maxTimer;
     }
     IEnumerator TimeFlow()
     {
@@ -24,7 +26,7 @@ public class TimeSlider : MonoBehaviour
             slider.value = Mathf.Clamp(currentTime / maxTime, 0, 1);
             if(slider.value == 1)
             {
-                if (Managers.Data.scoreData.currentScore >= 6500)
+                if (Managers.Data.scoreData.currentScore >= SlotManager._slot.clearScore)
                 {
                     Managers.Game.PlayerDied(2);
                 }
