@@ -71,7 +71,7 @@ public class SlotManager : MonoBehaviour
 
     List<int> studentCountOrder = new List<int>();
 
-    int studentOrder = 0;
+    int studentOrder;
     int waveCount = 5;
 
     bool is10;
@@ -83,6 +83,7 @@ public class SlotManager : MonoBehaviour
         Init();
         ResetValue();
         StartCoroutine(RandomStudentAct());
+        studentOrder = 0;
         is10 = false; is20 = false; is35 = false; is50 = false;
     }
     private void Update()
@@ -94,7 +95,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_10_Student_max;
             studentWave_max = To_10_Student_Wave_max;
             studentWave_minimum = To_10_Student_Wave_minimum;
-            waveCount = (int)(10f / To_10_Delay);
+            waveCount = (int)(10f / To_10_Delay) + 1;
             Debug.Log(waveCount);
             studentOrder = 0;
             ResetValue();
@@ -107,7 +108,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_20_Student_max;
             studentWave_max = To_20_Student_Wave_max;
             studentWave_minimum = To_20_Student_Wave_minimum;
-            waveCount = (int)(15f / To_20_Delay);
+            waveCount = (int)(15f / To_20_Delay) + 1;
             Debug.Log(waveCount);
             studentOrder = 0;
             ResetValue();
@@ -120,7 +121,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_35_Student_max;
             studentWave_max = To_35_Student_Wave_max;
             studentWave_minimum = To_35_Student_Wave_minimum;
-            waveCount = (int)(15f / To_35_Delay);
+            waveCount = (int)(15f / To_35_Delay) + 1;
             Debug.Log(waveCount);
             studentOrder = 0;
             ResetValue();
@@ -133,7 +134,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_50_Student_max;
             studentWave_max = To_50_Student_Wave_max;
             studentWave_minimum = To_50_Student_Wave_minimum;
-            waveCount = (int)(10f / To_50_Delay);
+            waveCount = (int)(10f / To_50_Delay) + 1;
             Debug.Log(waveCount);
             studentOrder = 0;
             ResetValue();
@@ -227,8 +228,8 @@ public class SlotManager : MonoBehaviour
     {
         while (true)
         {
-            //Debug.Log(studentOrder);
-            //Debug.Log(timer);
+            Debug.Log(studentOrder);
+            Debug.Log(timer);
             for (int i = 0; i < studentCountOrder[studentOrder]; i++)
             {
                 if (availableSlots.Count <= studentCountOrder[studentOrder])

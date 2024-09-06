@@ -51,7 +51,7 @@ public class MainGame_UI : UI_Popup
         {
             WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
-            Debug.Log("tmpSlot Null");
+            //Debug.Log("tmpSlot Null");
 
             
         }

@@ -20,7 +20,7 @@ public class MainGame : BaseScene
     private void Start()
     {
         Managers.UI.ShowPopUpUI<UI_Test>();
-        Debug.Log("Start");
+        //Debug.Log("Start");
         Init();
     }
 
