@@ -96,7 +96,7 @@ public class SlotManager : MonoBehaviour
             studentWave_max = To_10_Student_Wave_max;
             studentWave_minimum = To_10_Student_Wave_minimum;
             waveCount = (int)Mathf.Ceil(10f / To_10_Delay);
-            Debug.Log(waveCount);
+            Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
             is10 = true;
@@ -109,7 +109,7 @@ public class SlotManager : MonoBehaviour
             studentWave_max = To_20_Student_Wave_max;
             studentWave_minimum = To_20_Student_Wave_minimum;
             waveCount = (int)Mathf.Ceil(10f / To_20_Delay);
-            Debug.Log(waveCount);
+            Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
             is20 = true;
@@ -122,7 +122,7 @@ public class SlotManager : MonoBehaviour
             studentWave_max = To_35_Student_Wave_max;
             studentWave_minimum = To_35_Student_Wave_minimum;
             waveCount = (int)Mathf.Ceil(10f / To_35_Delay);
-            Debug.Log(waveCount);
+            Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
             is35 = true;
@@ -135,7 +135,7 @@ public class SlotManager : MonoBehaviour
             studentWave_max = To_50_Student_Wave_max;
             studentWave_minimum = To_50_Student_Wave_minimum;
             waveCount = (int)Mathf.Ceil(10f / To_50_Delay);
-            Debug.Log(waveCount);
+            Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
             is50 = true;
@@ -228,8 +228,7 @@ public class SlotManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(studentOrder);
-            Debug.Log(timer);
+            Debug.Log($"웨이브 : {studentOrder}");
             for (int i = 0; i < studentCountOrder[studentOrder]; i++)
             {
                 if (availableSlots.Count <= studentCountOrder[studentOrder])
@@ -276,7 +275,6 @@ public class SlotManager : MonoBehaviour
         int remainSum = studentCount;
         int currentCount = count;
 
-        Debug.Log(remainSum);
         // numbers 리스트에 min부터 max까지의 숫자 추가
         for (int i = wave_min; i <= wave_max; i++)
         {
@@ -345,9 +343,10 @@ public class SlotManager : MonoBehaviour
         List<int> tempList = SplitNumberInRange(studentsNumber_minimum, studentsNumber_max, waveCount, studentWave_minimum, studentWave_max);
         tempList.Sort();
         studentCountOrder = tempList;
+        int c = 0;
         foreach (int i in tempList)
         {
-            Debug.Log(i);
+            Debug.Log($" {c++}번째 웨이브 출현 딴짓 : {i}");
         }
     }
 }
