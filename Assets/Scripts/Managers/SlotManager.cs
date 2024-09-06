@@ -10,8 +10,8 @@ public class SlotManager : MonoBehaviour
     public static SlotManager _slot { get; private set; }
 
     public Slider slider;
-    public int timer;
-    public int maxTimer;
+    public float timer;
+    public float maxTimer;
     public int clearScore;
 
     [Header("Balance Time")]
@@ -227,6 +227,8 @@ public class SlotManager : MonoBehaviour
     {
         while (true)
         {
+            Debug.Log(studentOrder);
+            Debug.Log(timer);
             for (int i = 0; i < studentCountOrder[studentOrder]; i++)
             {
                 if (availableSlots.Count <= studentCountOrder[studentOrder])
@@ -250,7 +252,7 @@ public class SlotManager : MonoBehaviour
 
     public void DeleteAvailable(int x,int y)
     {
-        Debug.Log($"DeleteAvailabe 후 List의 Count {availableSlots.Count}");
+        //Debug.Log($"DeleteAvailabe 후 List의 Count {availableSlots.Count}");
         availableSlots.Add(new Vector2Int(x, y));
     }
 

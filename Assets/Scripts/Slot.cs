@@ -62,7 +62,7 @@ public class Slot : MonoBehaviour
     }
     public void offHighLight()
     {
-        Debug.Log("offHighLight 테스트");
+        //Debug.Log("offHighLight 테스트");
             image = GetComponent<Image>();
 
         // Water->0일때
