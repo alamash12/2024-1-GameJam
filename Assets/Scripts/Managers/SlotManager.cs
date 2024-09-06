@@ -276,13 +276,13 @@ public class SlotManager : MonoBehaviour
         int currentCount = count;
 
         // numbers 리스트에 min부터 max까지의 숫자 추가
-        for (int i = wave_min; i <= wave_max; i++)
-        {
-            numbers.Add(i);
-            remainSum -= i;
-            currentCount--;
-        }
-
+        //for (int i = wave_min; i <= wave_max; i++)
+        //{
+        //    numbers.Add(i);
+        //    remainSum -= i;
+        //    currentCount--;
+        //}
+        Debug.Log($"나와야하는 딴짓 수 : {studentCount}");
         combination = FindCombinations(wave_min, wave_max, remainSum, currentCount);
 
         if (combination.Count == 0)
