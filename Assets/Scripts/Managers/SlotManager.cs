@@ -227,8 +227,8 @@ public class SlotManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log(studentOrder);
-            Debug.Log(timer);
+            //Debug.Log(studentOrder);
+            //Debug.Log(timer);
             for (int i = 0; i < studentCountOrder[studentOrder]; i++)
             {
                 if (availableSlots.Count <= studentCountOrder[studentOrder])
