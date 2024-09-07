@@ -108,7 +108,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_20_Student_max;
             studentWave_max = To_20_Student_Wave_max;
             studentWave_minimum = To_20_Student_Wave_minimum;
-            waveCount = (int)Mathf.Ceil(10f / To_20_Delay);
+            waveCount = (int)Mathf.Ceil(15f / To_20_Delay);
             Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
@@ -121,7 +121,7 @@ public class SlotManager : MonoBehaviour
             studentsNumber_max = To_35_Student_max;
             studentWave_max = To_35_Student_Wave_max;
             studentWave_minimum = To_35_Student_Wave_minimum;
-            waveCount = (int)Mathf.Ceil(10f / To_35_Delay);
+            waveCount = (int)Mathf.Ceil(15f / To_35_Delay);
             Debug.Log($"waveCount : {waveCount}");
             studentOrder = 0;
             ResetValue();
