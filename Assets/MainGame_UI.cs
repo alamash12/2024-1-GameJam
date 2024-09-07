@@ -74,7 +74,7 @@ public class MainGame_UI : UI_Popup
         {
             WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
-            Debug.Log("tmpSlot Null");
+            //Debug.Log("tmpSlot Null");
         }
         else if(SlotManager._slot.tmpSlot.ActingType == 1)
         {
@@ -95,7 +95,7 @@ public class MainGame_UI : UI_Popup
         {
             WrongClicked();
             Managers.Sound.Play(Define.SFX.Button);
-            Debug.Log("tmpSlot Null");
+            //Debug.Log("tmpSlot Null");
         }
         else if(SlotManager._slot.tmpSlot.ActingType == 2)
         {

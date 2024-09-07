@@ -62,7 +62,7 @@ public class SlotManager : MonoBehaviour
     [SerializeField] private float first_slot_y; // 슬롯이 시작되는 영역
     [SerializeField] public float slotwidth = 0; // 하나의 슬롯의 가로 크기
     [SerializeField] public float slotheight = 0; // 하나의 슬롯의 세로 크기
-    [SerializeField] private int slotwidthSize=6;
+    [SerializeField] private int slotwidthSize = 6;
     [SerializeField] private int slotheightSize;// 가로세로 슬롯개수
 
 
@@ -82,13 +82,13 @@ public class SlotManager : MonoBehaviour
     {
         Init();
         ResetValue();
-        StartCoroutine(RandomStudentAct());
         studentOrder = 0;
+        StartCoroutine(RandomStudentAct());
         is10 = false; is20 = false; is35 = false; is50 = false;
     }
     private void Update()
     {
-        if (timer == 10 && !is10)
+        if (timer >= 10 && !is10)
         {
             studentDelay = To_10_Delay;
             studentsNumber_minimum = To_10_Student_minimum;
@@ -101,7 +101,7 @@ public class SlotManager : MonoBehaviour
             ResetValue();
             is10 = true;
         }
-        else if (timer == 20 && !is20)
+        else if (timer >= 20 && !is20)
         {
             studentDelay = To_20_Delay;
             studentsNumber_minimum = To_20_Student_minimum;
@@ -114,7 +114,7 @@ public class SlotManager : MonoBehaviour
             ResetValue();
             is20 = true;
         }
-        else if (timer == 35 && !is35)
+        else if (timer >= 35 && !is35)
         {
             studentDelay = To_35_Delay;
             studentsNumber_minimum = To_35_Student_minimum;
@@ -127,7 +127,7 @@ public class SlotManager : MonoBehaviour
             ResetValue();
             is35 = true;
         }
-        else if (timer == 50 && !is50)
+        else if (timer >= 50 && !is50)
         {
             studentDelay = To_50_Delay;
             studentsNumber_minimum = To_50_Student_minimum;
@@ -229,23 +229,26 @@ public class SlotManager : MonoBehaviour
         while (true)
         {
             Debug.Log($"웨이브 : {studentOrder}");
-            for (int i = 0; i < studentCountOrder[studentOrder]; i++)
+            if(studentOrder < waveCount)
             {
-                if (availableSlots.Count <= studentCountOrder[studentOrder])
+                for (int i = 0; i < studentCountOrder[studentOrder]; i++)
                 {
-                    Managers.Game.PlayerDied(0); yield break;
+                    if (availableSlots.Count <= studentCountOrder[studentOrder])
+                    {
+                        Managers.Game.PlayerDied(0); yield break;
+                    }
+                    int randomIndex = Random.Range(0, availableSlots.Count);
+                    //Debug.Log($"DeleteAvailabe 전의 List의 Count {availableSlots.Count}");
+                    Vector2Int selectedSlotposition = availableSlots[randomIndex];
+                    Slot slot = studentSlotList[selectedSlotposition.x, selectedSlotposition.y];
+                    if (!slot.isActing)
+                    {
+                        slot.SetActingtype(Random.Range(0, 3));
+                        availableSlots.RemoveAt(randomIndex); // 중복 방지를 위해 선택한 슬롯을 제거
+                    }
                 }
-                int randomIndex = Random.Range(0, availableSlots.Count);
-                //Debug.Log($"DeleteAvailabe 전의 List의 Count {availableSlots.Count}");
-                Vector2Int selectedSlotposition = availableSlots[randomIndex];
-                Slot slot = studentSlotList[selectedSlotposition.x, selectedSlotposition.y];
-                if (!slot.isActing)
-                {
-                    slot.SetActingtype(Random.Range(0, 3));
-                    availableSlots.RemoveAt(randomIndex); // 중복 방지를 위해 선택한 슬롯을 제거
-                }
+                studentOrder++;
             }
-            studentOrder++;
             yield return new WaitForSeconds(studentDelay);
         }
     }
